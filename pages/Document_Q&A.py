@@ -41,7 +41,7 @@ def create_vector_embedding():
     if "vectors" not in st.session_state:
         st.session_state.embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
         
-        st.session_state.loader = PyPDFDirectoryLoader("C:/DataScience/Gen_AI/Q&A/reasearch_papers")
+        st.session_state.loader = PyPDFDirectoryLoader("C:/DataScience/Gen_AI/Q&A/assets")
         
         st.session_state.docs = st.session_state.loader.load()
         
@@ -75,5 +75,6 @@ if user_prompt:
 
     with st.expander("Document similarity search"):
         for i,doc in enumerate(response["context"]):
+            st.write("------------------------------------")
             st.write(doc.page_content)
             st.write("------------------------------------")
